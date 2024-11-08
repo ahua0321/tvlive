@@ -27,6 +27,5 @@ jobs:
         run: |
             git config --local user.email "ahua0321@github.com"
             git config --local user.name "ahua"
-            git add .
-            git commit "iptv.txt"-m "Automatic update"
-            git push -f
+            git commit -am "Automatic update"
+            git push -f origin main
