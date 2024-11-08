@@ -18,15 +18,18 @@ jobs:
           python-version: 3.x
           
       - name: Install dependencies
-        run: pip install selenium requests futures opencv-python eventlet
-        
+        run: pip install opencv-python requests        
+      
       - name: Run iptv
         run: python ${{ github.workspace }}/sxzb.py
          
       - name: Commit results
         run: |
             git config --local user.email "ahua0321@github.com"
-            git config --local user.name "ahua0321"
-            git pull origin main
+            git config --local user.name "ahua"
+            if [ -n "$(git status --porcelain)" ]; then
             git commit -am "Automatic update"
-            git push -f
+            git push
+            else
+              echo "No changes detected, skipping commit."
+            fi
