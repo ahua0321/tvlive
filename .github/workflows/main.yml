@@ -28,6 +28,5 @@ jobs:
             git config --local user.email "ahua0321@github.com"
             git config --local user.name "ahua"
             git add  
-            git commit -am "Automatic update"
-            git pull
+            git commit -m "Automatic update"
             git push -f
