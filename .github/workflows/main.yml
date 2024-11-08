@@ -16,8 +16,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+          
       - name: Install dependencies
-        run: pip install opencv-python requests        
+         run: pip install selenium requests futures opencv-python eventlet
+        
       - name: Run iptv
         run: python ${{ github.workspace }}/sxzb.py
          
