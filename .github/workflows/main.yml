@@ -26,6 +26,6 @@ jobs:
       - name: Commit results
         run: |
             git config --local user.email "ahua0321@github.com"
-            git config --local user.name "ahua"
+            git config --local user.name "ahua0321"
             git commit -am "Automatic update"
             git push -f
