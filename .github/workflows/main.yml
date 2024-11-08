@@ -29,4 +29,5 @@ jobs:
             git config --local user.name "ahua"
             git add  
             git commit -am "Automatic update"
+            git pull
             git push -f
