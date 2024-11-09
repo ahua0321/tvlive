@@ -8,6 +8,7 @@ import base64
 import cv2
 import datetime
 from datetime import datetime
+import time
 
 # 获取rtp目录下的文件名
 files = os.listdir('rtp')
