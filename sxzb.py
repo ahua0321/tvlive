@@ -9,8 +9,6 @@ import cv2
 import datetime
 from datetime import datetime
 
-headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'}
-
 # 获取rtp目录下的文件名
 files = os.listdir('rtp')
 
