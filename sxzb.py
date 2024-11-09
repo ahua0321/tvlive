@@ -1,14 +1,12 @@
 import os
-import concurrent.futures
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import requests
 import re
 import base64
 import cv2
 import datetime
 from datetime import datetime
-import time
+
+headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'}
 
 # 获取rtp目录下的文件名
 files = os.listdir('rtp')
@@ -77,28 +75,11 @@ for keyword in keywords:
             search_txt = base64.b64encode(bytes_string).decode('utf-8')
             search_url += search_txt
             print(f"{current_time} 查询运营商 : {province}{isp} ，查询网址 : {search_url}")
-
-            # 创建一个Chrome WebDriver实例
-            chrome_options = Options()
-            chrome_options.add_argument('--headless')
-            chrome_options.add_argument('--no-sandbox')
-            chrome_options.add_argument('--disable-dev-shm-usage')
-
-            driver = webdriver.Chrome(options=chrome_options)
-            # 使用WebDriver访问网页
-            driver.get(search_url)  # 将网址替换为你要访问的网页地址
-            time.sleep(10)
-            # 获取网页内容
-            html_content = driver.page_source
-
-            # 关闭WebDriver
-            driver.quit()
-
-            #response = requests.get(search_url, headers=headers, timeout=15)
+            response = requests.get(search_url, headers=headers, timeout=15)
             # 处理响应
-            #response.raise_for_status()
+            response.raise_for_status()
             # 检查请求是否成功
-            #html_content = response.text           
+            html_content = response.text           
             # 设置匹配的格式，如http://8.8.8.8:8888
             pattern = r"http://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+"
             urls_all = re.findall(pattern, html_content)
